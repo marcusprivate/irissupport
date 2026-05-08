@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iris Business Support - Design Options Mockup</title>
+  <style>
+    @font-face {
+      font-family: "Arial Rounded MT Bold";
+      src: url("templates/astroid_template_zero/fonts/ArialRoundedMTBold.woff") format("woff");
+      font-display: swap;
+    }
+
+    :root {
+      --blue: #174489;
+      --blue-soft: #325a97;
+      --purple: #634489;
+      --purple-soft: #e9dff5;
+      --purple-mid: #a266e9;
+      --ink: #343236;
+      --text: #4f4144;
+      --mist: #f3f7f9;
+      --line: #d9e3ec;
+      --paper: #ffffff;
+      --brand-font: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+      --body-font: Arial, Helvetica, sans-serif;
+      --shadow: 0 14px 34px rgba(23, 68, 137, 0.11);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #f7f9fb;
+      font-family: var(--body-font);
+      line-height: 1.45;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .page-hero {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      padding: 30px clamp(18px, 4vw, 56px);
+    }
+
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1,
+    .area-title,
+    .brief h2,
+    .option-name,
+    .tab-button,
+    .jump-nav a,
+    .button {
+      font-family: var(--brand-font);
+      letter-spacing: 0;
+    }
+
+    .page-hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height: 1.05;
+    }
+
+    .page-hero p {
+      max-width: 780px;
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .page-hero img {
+      width: 166px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .jump-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px clamp(18px, 4vw, 56px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .jump-nav a {
+      flex: 0 0 auto;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px clamp(16px, 3vw, 40px) 70px;
+    }
+
+    .brief,
+    .area {
+      margin-bottom: 34px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 455px);
+    }
+
+    .brief-copy,
+    .brief-output {
+      padding: 24px;
+    }
+
+    .brief-copy {
+      border-right: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-family: var(--brand-font);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .brief h2,
+    .area-title {
+      margin: 0;
+      color: var(--purple);
+      font-size: clamp(27px, 3vw, 40px);
+      line-height: 1.08;
+    }
+
+    .brief p,
+    .area-intro {
+      max-width: 880px;
+      margin: 12px 0 0;
+      font-size: 16px;
+    }
+
+    .brief-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .button {
+      min-height: 42px;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: #ffffff;
+      background: var(--blue);
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      color: var(--blue);
+      background: var(--mist);
+      border: 1px solid var(--line);
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .brief-output label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-family: var(--brand-font);
+      font-size: 14px;
+    }
+
+    #briefText,
+    #designerNotes {
+      width: 100%;
+      min-height: 205px;
+      resize: vertical;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      background: #fbfdff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    #designerNotes {
+      min-height: 80px;
+      margin-top: 10px;
+      font-family: var(--body-font);
+    }
+
+    .area-head {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .audit-notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .audit-note {
+      padding: 12px;
+      background: var(--mist);
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .device-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 16px 24px 0;
+    }
+
+    .tab-button {
+      min-height: 40px;
+      padding: 8px 14px;
+      color: var(--blue);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .tab-button[aria-selected="true"] {
+      color: #ffffff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .device-panel {
+      display: none;
+      padding: 16px 24px 24px;
+    }
+
+    .device-panel.is-active {
+      display: block;
+    }
+
+    .device-note {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .option {
+      position: relative;
+      min-width: 0;
+      padding: 16px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .option input {
+      position: absolute;
+      top: 17px;
+      left: 17px;
+      width: 20px;
+      height: 20px;
+      accent-color: var(--purple);
+    }
+
+    .option:has(input:checked) {
+      background: #fbf8ff;
+      box-shadow: inset 0 0 0 3px rgba(99, 68, 137, 0.28);
+    }
+
+    .option-title {
+      min-height: 74px;
+      padding-left: 30px;
+    }
+
+    .option-name {
+      display: block;
+      color: var(--blue);
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .option-desc {
+      display: block;
+      margin-top: 4px;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .preview {
+      position: relative;
+      min-height: 300px;
+      margin-top: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .preview.mobile {
+      width: min(100%, 330px);
+      min-height: 430px;
+      margin-inline: auto;
+      border: 8px solid #20242a;
+      border-radius: 30px;
+    }
+
+    .current-shot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--shot-position, top center);
+    }
+
+    .shot-label {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      padding: 8px 10px;
+      color: #ffffff;
+      background: rgba(23, 68, 137, 0.9);
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .mock-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      font-family: var(--brand-font);
+    }
+
+    .mock-nav img {
+      width: 120px;
+      height: auto;
+    }
+
+    .mock-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .light-nav {
+      color: var(--blue);
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cta-pill {
+      color: #ffffff;
+      background: var(--purple);
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    .overlay-nav {
+      color: #ffffff;
+      background-image: linear-gradient(90deg, rgba(23, 68, 137, 0.86), rgba(23, 68, 137, 0.32)), url("images/slider23/irissupport-home3.jpeg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .overlay-nav img,
+    .mobile-logo {
+      padding: 7px;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 6px;
+    }
+
+    .split-nav .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+    }
+
+    .split-nav .brand-row img {
+      width: 145px;
+    }
+
+    .split-nav .link-row {
+      display: flex;
+      gap: 18px;
+      padding: 11px 20px;
+      color: #ffffff;
+      background: var(--blue);
+      font-family: var(--brand-font);
+      font-size: 14px;
+    }
+
+    .mobile-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      padding: 10px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hamb {
+      width: 34px;
+      height: 26px;
+      background:
+        linear-gradient(var(--ink), var(--ink)) 0 3px / 34px 3px no-repeat,
+        linear-gradient(var(--ink), var(--ink)) 0 12px / 34px 3px no-repeat,
+        linear-gradient(var(--ink), var(--ink)) 0 21px / 34px 3px no-repeat;
+    }
+
+    .mobile-logo {
+      width: 88px;
+    }
+
+    .mobile-menu {
+      padding: 16px 22px 22px;
+      color: #ffffff;
+      background: var(--blue);
+    }
+
+    .mobile-menu.light {
+      color: var(--blue);
+      background: #ffffff;
+    }
+
+    .mobile-menu.cards {
+      display: grid;
+      gap: 9px;
+      color: var(--blue);
+      background: var(--mist);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      color: inherit;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      font-family: var(--brand-font);
+      text-decoration: none;
+    }
+
+    .mobile-menu.light a {
+      border-color: var(--line);
+    }
+
+    .mobile-menu.cards a {
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .mobile-actions {
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      background: var(--purple-soft);
+    }
+
+    .mobile-actions span {
+      flex: 1;
+      padding: 10px;
+      color: #ffffff;
+      background: var(--purple);
+      border-radius: 6px;
+      text-align: center;
+      font-family: var(--brand-font);
+    }
+
+    .photo-hero {
+      position: relative;
+      min-height: 100%;
+      color: #ffffff;
+      background-image: url("images/headers/header1-mobiel.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo-hero.services {
+      background-image: url("images/slider24/header-diensten.jpeg");
+    }
+
+    .hero-title {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: 78%;
+      padding: 13px 17px;
+      background: rgba(23, 68, 137, 0.78);
+      font-family: var(--brand-font);
+      font-size: 28px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .editorial-hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 100%;
+    }
+
+    .editorial-hero .image {
+      background-image: url("images/slider23/irissupport-home2.jpeg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .editorial-hero .copy,
+    .content-pad {
+      padding: 24px;
+      background: #ffffff;
+    }
+
+    .editorial-hero h4,
+    .content-pad h4,
+    .service-current h4,
+    .review-pad h4,
+    .contact-pad h4,
+    .type-pad h4 {
+      margin: 0;
+      color: var(--purple);
+      font-family: var(--brand-font);
+      font-size: 28px;
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+
+    .compact-hero .image {
+      height: 190px;
+      background-image: linear-gradient(rgba(23, 68, 137, 0.25), rgba(23, 68, 137, 0.25)), url("images/slider24/header-diensten.jpeg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .compact-hero .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 22px;
+      color: #ffffff;
+      background: var(--blue);
+      font-family: var(--brand-font);
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    .mobile-hero-card {
+      height: 250px;
+      background-image: url("images/headers/header1-mobiel.jpg");
+      background-position: center;
+      background-size: cover;
+      padding: 20px;
+    }
+
+    .mobile-hero-card span {
+      display: block;
+      padding: 11px 13px;
+      color: #ffffff;
+      background: rgba(23, 68, 137, 0.76);
+      font-family: var(--brand-font);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .card-grid,
+    .quote-grid,
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mini-card,
+    .quote-card,
+    .detail-card,
+    .timeline-step,
+    .matrix-row {
+      padding: 14px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .mini-card strong,
+    .quote-card strong,
+    .detail-card strong,
+    .timeline-step strong,
+    .matrix-row strong {
+      display: block;
+      color: var(--blue);
+      font-family: var(--brand-font);
+      font-size: 14px;
+    }
+
+    .benefit-row {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      margin-top: 14px;
+    }
+
+    .benefit-row b {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: #ffffff;
+      background: var(--purple);
+      border-radius: 999px;
+      font-family: var(--brand-font);
+    }
+
+    .topic-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .topic-tabs span {
+      padding: 8px 10px;
+      color: var(--blue);
+      background: var(--purple-soft);
+      border-radius: 999px;
+      font-family: var(--brand-font);
+      font-size: 13px;
+    }
+
+    .service-current {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100%;
+    }
+
+    .service-current .left,
+    .service-current .right {
+      padding: 24px;
+    }
+
+    .service-current .right {
+      color: #ffffff;
+      background: var(--purple);
+    }
+
+    .service-current .right h4 {
+      color: #ffffff;
+    }
+
+    .service-current ul,
+    .content-pad ul {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .timeline-step {
+      position: relative;
+      padding-left: 48px;
+    }
+
+    .timeline-step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      color: #ffffff;
+      background: var(--blue);
+      border-radius: 999px;
+      font-family: var(--brand-font);
+      font-size: 12px;
+    }
+
+    .matrix {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-pad,
+    .contact-pad,
+    .type-pad {
+      padding: 24px;
+      min-height: 100%;
+      background: #ffffff;
+    }
+
+    .review-pad h4 {
+      text-align: center;
+    }
+
+    .review-card {
+      overflow: hidden;
+      color: #ffffff;
+      background: var(--blue-soft);
+      border-radius: 6px;
+    }
+
+    .review-card img {
+      width: 100%;
+      height: 128px;
+      object-fit: cover;
+    }
+
+    .review-card strong {
+      display: block;
+      padding: 11px;
+      font-family: var(--brand-font);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .quote-card img {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .featured-review {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .featured-review img {
+      width: 100%;
+      height: 100%;
+      min-height: 190px;
+      object-fit: cover;
+    }
+
+    .featured-review div {
+      padding: 18px;
+      color: #ffffff;
+      background: var(--blue);
+    }
+
+    .story-tiles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .story-tile {
+      min-height: 105px;
+      padding: 14px;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(23, 68, 137, 0.92), rgba(99, 68, 137, 0.82)), url("images/reviews/top-foto.jpg");
+      background-position: center;
+      background-size: cover;
+      border-radius: 6px;
+      font-family: var(--brand-font);
+    }
+
+    .contact-card-row,
+    .footer-light,
+    .editorial-contact {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .contact-card-row .copy,
+    .editorial-contact .copy {
+      padding: 22px;
+      background: #ffffff;
+    }
+
+    .contact-photo,
+    .editorial-contact .photo {
+      background-image: url("images/horse_footer.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-buttons span {
+      padding: 9px 11px;
+      color: #ffffff;
+      background: var(--blue);
+      border-radius: 6px;
+      font-family: var(--brand-font);
+      font-size: 13px;
+    }
+
+    .contact-band {
+      min-height: 100%;
+      padding: 28px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+    }
+
+    .contact-band h4 {
+      color: #ffffff;
+    }
+
+    .footer-clean,
+    .footer-current,
+    .footer-split .bottom {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      min-height: 100%;
+      padding: 26px;
+      color: #ffffff;
+      background: var(--ink);
+    }
+
+    .footer-clean img {
+      width: 138px;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 6px;
+    }
+
+    .footer-current {
+      grid-template-columns: 1fr 1fr 1.35fr;
+      padding: 0;
+      gap: 0;
+    }
+
+    .footer-current > div {
+      padding: 24px;
+    }
+
+    .footer-current .brand-block,
+    .footer-light .brand-side {
+      display: grid;
+      place-items: center;
+      background: var(--purple-soft);
+    }
+
+    .footer-current .brand-block img,
+    .footer-light .brand-side img {
+      width: 165px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .social-row span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      color: #ffffff;
+      background: var(--purple);
+      border-radius: 999px;
+      font-family: var(--brand-font);
+      font-size: 13px;
+    }
+
+    .footer-light {
+      background: #ffffff;
+      border-top: 8px solid var(--blue);
+    }
+
+    .footer-light .copy-side {
+      padding: 28px;
+      color: var(--ink);
+    }
+
+    .footer-split .top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 28px;
+      color: #ffffff;
+      background: var(--blue);
+    }
+
+    .footer-split .bottom {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      min-height: 205px;
+    }
+
+    .type-current p {
+      font-family: var(--brand-font);
+      font-size: 19px;
+      line-height: 1.35;
+    }
+
+    .type-calm p {
+      color: #3f3b3c;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .type-fresh {
+      background: linear-gradient(90deg, #ffffff 0 68%, #eaf4f7 68% 100%);
+    }
+
+    .type-fresh h4,
+    .type-calm h4 {
+      color: var(--blue);
+    }
+
+    .type-editorial h4 {
+      font-size: 36px;
+    }
+
+    @media (max-width: 900px) {
+      .page-hero-inner,
+      .brief,
+      .audit-notes,
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero img {
+        width: 132px;
+      }
+
+      .brief-copy {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .device-panel {
+        padding-inline: 16px;
+      }
+
+      .area-head,
+      .device-tabs {
+        padding-inline: 16px;
+      }
+
+      .preview {
+        min-height: 275px;
+      }
+
+      .preview.mobile {
+        min-height: 430px;
+      }
+
+      .mock-links {
+        display: none;
+      }
+
+      .editorial-hero,
+      .service-current,
+      .featured-review,
+      .contact-card-row,
+      .footer-clean,
+      .footer-current,
+      .footer-light,
+      .footer-split .bottom,
+      .editorial-contact {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid,
+      .quote-grid,
+      .detail-grid,
+      .story-tiles {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-split .top {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-photo,
+      .editorial-contact .photo {
+        min-height: 160px;
+      }
+    }
+  </style>
+
+<script data-goatcounter="https://irissupport.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <h1>Design options mockup</h1>
+        <p>Kies nu per onderdeel apart voor desktop en mobiel. Optie 0 gebruikt echte screenshots van de huidige website, zodat "keep current" een eerlijk referentiepunt is.</p>
+      </div>
+      <img src="images/logo_iriss_support.png" alt="Iris Business Support">
+    </div>
+  </header>
+
+  <nav class="jump-nav" aria-label="Mockup secties">
+    <a href="#brief">Keuzebrief</a>
+    <a href="#header">Header</a>
+    <a href="#hero">Page header</a>
+    <a href="#intro">Homepage content</a>
+    <a href="#services">Diensten</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#footer">Footer</a>
+    <a href="#type">Typografie</a>
+  </nav>
+
+  <main>
+    <section class="brief" id="brief">
+      <div class="brief-copy">
+        <p class="eyebrow">Hoe je feedback geeft</p>
+        <h2>Kies per onderdeel en per schermformaat</h2>
+        <p>Gebruik de tabs Desktop en Mobile per element. Selecteer optie 0 als het huidige ontwerp voor dat schermformaat moet blijven. De keuzebrief wordt automatisch bijgewerkt.</p>
+        <div class="brief-actions">
+          <button class="button" type="button" id="copyBrief">Copy design brief</button>
+          <button class="button secondary" type="button" id="resetChoices">Reset to keep current</button>
+          <span class="status" id="copyStatus" aria-live="polite"></span>
+        </div>
+      </div>
+      <div class="brief-output">
+        <label for="briefText">Generated design brief</label>
+        <textarea id="briefText" readonly></textarea>
+        <label for="designerNotes">Extra notes for Codex</label>
+        <textarea id="designerNotes" placeholder="Bijvoorbeeld: desktop header optie A, mobile header optie C, footer mobile keep current."></textarea>
+      </div>
+    </section>
+
+    <div id="areas"></div>
+  </main>
+
+  <template id="optionTemplate">
+    <label class="option">
+      <input type="radio">
+      <span class="option-title">
+        <span class="option-name"></span>
+        <span class="option-desc"></span>
+      </span>
+      <div class="preview"></div>
+    </label>
+  </template>
+
+  <script>
+    const currentPath = "images/design-options/current/";
+
+    const areas = [
+      {
+        id: "header",
+        title: "Header en navigatie",
+        intro: "De header moet het merk direct herkenbaar maken en tegelijk helder navigeren. Desktop en mobiel vragen hier om verschillende keuzes.",
+        notes: [
+          "Desktop: de huidige sticky balk is een echte blauwe navigatiebalk met veel tekstgewicht.",
+          "Mobiel: de gesloten header is verbeterd, maar menu-indeling en contactacties kunnen apart gekozen worden.",
+          "Contact verdient mogelijk een primaire plek, vooral mobiel."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor logo, navigatiebalk, actieve pagina en contactpositie.",
+            current: current("header-desktop.png", "Real screenshot: contact page scrolled state, 1280px desktop.", "top center"),
+            options: headerDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor gesloten header, menu-opbouw en directe acties.",
+            current: current("header-mobile.png", "Real screenshot: homepage closed mobile header, 390px.", "top center"),
+            options: headerMobile()
+          }
+        }
+      },
+      {
+        id: "hero",
+        title: "Top page header / hero",
+        intro: "De fotografie is sterk. De keuze gaat vooral over titelplaatsing, contrast en hoeveel ruimte de hero inneemt voordat de inhoud begint.",
+        notes: [
+          "Desktop: huidige hero toont een fotobalk en veel witruimte voordat content begint.",
+          "Mobiel: titel en beeld moeten samen zichtbaar blijven zonder clipping.",
+          "Een consistente titelbehandeling maakt pagina's rustiger."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor fotobalk, titelvlak en aansluiting op content.",
+            current: current("hero-desktop.png", "Real screenshot: homepage hero/content transition, 1280px desktop.", "top center"),
+            options: heroDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor titelvlak en beeldhoogte.",
+            current: current("hero-mobile.png", "Real screenshot: homepage hero, 390px mobile.", "top center"),
+            options: heroMobile()
+          }
+        }
+      },
+      {
+        id: "intro",
+        title: "Homepage intro en accordion",
+        intro: "De inhoud is goed, maar de huidige presentatie maakt diensten op desktop deels verborgen en op mobiel zwaar tekstgericht.",
+        notes: [
+          "De huidige accordion werkt, maar is minder scanbaar.",
+          "Desktop heeft ruimte voor zichtbare servicegroepen.",
+          "Mobiel heeft baat bij kortere blokken en grotere tikdoelen."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor de introstructuur en zichtbaarheid van diensten.",
+            current: current("intro-desktop.png", "Real screenshot: homepage intro area, 1280px desktop.", "center center"),
+            options: introDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor tekstlengte, accordion of kaarten.",
+            current: current("intro-mobile.png", "Real screenshot: homepage accordion intro, 390px mobile.", "center top"),
+            options: introMobile()
+          }
+        }
+      },
+      {
+        id: "services",
+        title: "Diensten en werkwijze",
+        intro: "De dienstenpagina kan duidelijker onderscheid maken tussen aanbod, proces en vertrouwen.",
+        notes: [
+          "Lange lijsten zijn informatief, maar minder ontworpen.",
+          "Het paarse werkwijzeblok is herkenbaar maar zwaar.",
+          "Mobiel moet snel antwoord geven op 'wat kan ik krijgen?'."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor dienstenoverzicht en werkwijze.",
+            current: current("services-desktop.png", "Real screenshot: services content area, 1280px desktop.", "center center"),
+            options: servicesDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor lijst, cards of stappen.",
+            current: current("services-mobile.png", "Real screenshot: services mobile top/content, 390px.", "top center"),
+            options: servicesMobile()
+          }
+        }
+      },
+      {
+        id: "reviews",
+        title: "Reviews en testimonials",
+        intro: "Reviews bouwen vertrouwen. De keuze gaat over rust, portretgebruik, tekstlengte en hoeveel verhalen tegelijk zichtbaar zijn.",
+        notes: [
+          "Huidige cards hebben karakter, maar tekstlengtes verschillen sterk.",
+          "Portretten kunnen meer premium en gelijkmatig worden gepresenteerd.",
+          "Mobiel vraagt om kortere quotes of uitgelichte verhalen."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor masonry, quote cards of featured story.",
+            current: current("reviews-desktop.png", "Real screenshot: reviews grid, 1280px desktop.", "center center"),
+            options: reviewsDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor reviewkaartvolgorde en quote-lengte.",
+            current: current("reviews-mobile.png", "Real screenshot: reviews mobile top, 390px.", "top center"),
+            options: reviewsMobile()
+          }
+        }
+      },
+      {
+        id: "contact",
+        title: "Contact en CTA",
+        intro: "Contact moet persoonlijk blijven, maar telefoon en e-mail mogen directer zichtbaar zijn.",
+        notes: [
+          "De huidige contactpagina heeft veel lege ruimte.",
+          "De foto is warm en persoonlijk, maar staat los van de actie.",
+          "CTA-knoppen kunnen meer vertrouwen en richting geven."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor foto, contactgegevens en primaire actie.",
+            current: current("contact-desktop.png", "Real screenshot: contact content area, 1280px desktop.", "center center"),
+            options: contactDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor snelle bel/mail-acties.",
+            current: current("contact-mobile.png", "Real screenshot: contact mobile top, 390px.", "top center"),
+            options: contactMobile()
+          }
+        }
+      },
+      {
+        id: "footer",
+        title: "Footer en social icons",
+        intro: "De footer is een belangrijk verbeterpunt: informatie, logo en socials moeten duidelijker en beter uitgelijnd worden.",
+        notes: [
+          "Desktop: socials staan nu verticaal en dicht tegen de rand.",
+          "Downloads en credits hebben relatief laag contrast.",
+          "Mobiel heeft vooral behoefte aan compacte contactacties en leesbare legal."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor footer-layout, social icons en contrast.",
+            current: current("footer-desktop.png", "Real screenshot: contact footer, 1280px desktop.", "center center"),
+            options: footerDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor footer volgorde en social/contactacties. Current uses a real mobile contact-page screenshot as available baseline.",
+            current: current("footer-mobile.png", "Real screenshot: contact page mobile, 390px. Footer-specific mobile capture unavailable in existing audit set.", "bottom center"),
+            options: footerMobile()
+          }
+        }
+      },
+      {
+        id: "type",
+        title: "Typografie, kleur en ritme",
+        intro: "Het ronde lettertype is herkenbaar, maar de keuze is hoeveel het in bodytekst, buttons en headings gebruikt moet worden.",
+        notes: [
+          "Brandfont geeft persoonlijkheid, maar kan lange tekst zwaar maken.",
+          "Meer typografische hierarchie maakt de site professioneler.",
+          "Desktop en mobiel kunnen dezelfde stijl kiezen, maar met ander ritme."
+        ],
+        devices: {
+          desktop: {
+            note: "Desktopkeuze voor leesbaarheid, kleurgebruik en spacing.",
+            current: current("type-desktop.png", "Real screenshot: homepage text/content rhythm, 1280px desktop.", "center center"),
+            options: typeDesktop()
+          },
+          mobile: {
+            note: "Mobiele keuze voor tekstgewicht, headinggrootte en scanbaarheid.",
+            current: current("type-mobile.png", "Real screenshot: services mobile typography, 390px.", "center top"),
+            options: typeMobile()
+          }
+        }
+      }
+    ];
+
+    function current(file, label, position) {
+      return {
+        kind: "current",
+        name: "0. Keep current",
+        desc: "Gebruik de huidige websiteweergave voor dit schermformaat.",
+        value: `0 - Keep current: real screenshot baseline (${label})`,
+        image: `${currentPath}${file}`,
+        label,
+        position
+      };
+    }
+
+    function opt(key, name, desc, value, html) {
+      return { key, name: `${key}. ${name}`, desc, value: `${key} - ${value}`, html };
+    }
+
+    function headerDesktop() {
+      return [
+        opt("A", "Light brand", "Witte header, blauwe links, contact als paarse CTA.", "Light brand desktop header with white background, calm blue navigation and purple contact CTA.", `<div class="mock-nav light-nav"><img src="images/logo_iriss_support.png" alt=""><div class="mock-links"><span>Home</span><span>Dit ben ik</span><span>Diensten</span><span>Reviews</span><span class="cta-pill">Contact</span></div></div>`),
+        opt("B", "Image overlay", "Header wordt onderdeel van de fotografie met leesbare logo-backing.", "Image overlay desktop header with transparent blue layer and frosted logo.", `<div class="mock-nav overlay-nav"><img src="images/logo_iriss_support.png" alt=""><div class="mock-links"><span>Home</span><span>Dit ben ik</span><span>Diensten</span><span>Reviews</span><span>Contact</span></div></div>`),
+        opt("C", "Split header", "Merk eerst, daaronder een compacte blauwe navigatiestrook.", "Split desktop header with brand row and compact blue navigation strip.", `<div class="split-nav"><div class="brand-row"><img src="images/logo_iriss_support.png" alt=""><span class="cta-pill">Contact</span></div><div class="link-row"><span>Home</span><span>Dit ben ik</span><span>Wat kan ik voor je doen</span><span>Reviews</span></div></div>`)
+      ];
+    }
+
+    function headerMobile() {
+      return [
+        opt("A", "Light drawer", "Wit menu met blauwe links en contact bovenaan.", "Light mobile drawer with contact shortcuts and blue navigation links.", `<div class="mobile-head"><span class="hamb"></span><img class="mobile-logo" src="images/logo_iriss_support.png" alt=""><span></span></div><div class="mobile-menu light"><a>Bel Irisabella</a><a>Mail direct</a><a>Home</a><a>Diensten</a><a>Reviews</a></div>`),
+        opt("B", "Card menu", "Elke bestemming wordt een duidelijk tikvlak.", "Mobile card menu with larger tap targets and clearer destinations.", `<div class="mobile-head"><span class="hamb"></span><img class="mobile-logo" src="images/logo_iriss_support.png" alt=""><span></span></div><div class="mobile-menu cards"><a>Administratie regelen</a><a>Bedrijfsondersteuning</a><a>Reviews bekijken</a><a>Contact opnemen</a></div>`),
+        opt("C", "Action bar", "Simpel menu plus vaste bel/mail acties onderaan.", "Mobile menu with persistent call and mail action bar.", `<div class="mobile-head"><span class="hamb"></span><img class="mobile-logo" src="images/logo_iriss_support.png" alt=""><span></span></div><div class="mobile-menu"><a>Diensten</a><a>Werkwijze</a><a>Reviews</a><a>Contact</a></div><div class="mobile-actions"><span>Bel</span><span>Mail</span></div>`)
+      ];
+    }
+
+    function heroDesktop() {
+      return [
+        opt("A", "Blue title band", "Titel krijgt een rustig blauw vlak binnen de foto.", "Desktop hero with translucent blue title block anchored in the image.", `<div class="photo-hero"><div class="hero-title">Brengt de zaak op orde</div></div>`),
+        opt("B", "Editorial split", "Fotografie en propositie direct aan elkaar gekoppeld.", "Desktop editorial split hero with image and proposition copy.", `<div class="editorial-hero"><div class="image"></div><div class="copy"><h4>Brengt de zaak op orde</h4><p>Administratie helder, overzichtelijk en altijd dichtbij.</p></div></div>`),
+        opt("C", "Compact bar", "Kortere hero, sneller naar inhoud, sterke titelstrip.", "Compact desktop hero with shorter image and solid blue title strip.", `<div class="compact-hero"><div class="image"></div><div class="bar"><span>Wat kan ik voor je doen</span></div></div>`)
+      ];
+    }
+
+    function heroMobile() {
+      return [
+        opt("A", "Contained title", "Titel blijft volledig binnen het beeldvlak.", "Mobile hero with contained title band over image.", `<div class="mobile-hero-card"><span>Brengt de zaak op orde</span></div>`),
+        opt("B", "Text below image", "Foto eerst, titel eronder voor maximale leesbaarheid.", "Mobile hero with image first and title below.", `<div class="compact-hero"><div class="image"></div><div class="bar"><span>Brengt de zaak op orde</span></div></div>`),
+        opt("C", "Compact intro", "Kortere hero met direct daarna een belofte.", "Compact mobile hero followed by short proposition.", `<div class="mobile-hero-card"><span>Administratie helder geregeld</span></div><div class="content-pad"><p>Meer overzicht, minder administratieve druk.</p></div>`)
+      ];
+    }
+
+    function introDesktop() {
+      return [
+        opt("A", "Service cards", "Belangrijkste diensten direct zichtbaar.", "Desktop homepage intro with visible service cards instead of hidden panels.", `<div class="content-pad"><h4>Je administratie goed geregeld</h4><p>Iris Business Support zorgt dat jij overzicht houdt.</p><div class="card-grid"><div class="mini-card"><strong>Boekhouding</strong><span>Opzetten en bijhouden</span></div><div class="mini-card"><strong>Facturatie</strong><span>Rust in betalingen</span></div><div class="mini-card"><strong>Cijfers</strong><span>Altijd up-to-date</span></div><div class="mini-card"><strong>Processen</strong><span>Slimmer werken</span></div></div></div>`),
+        opt("B", "Benefit rows", "Meer rust en snelle scanbaarheid.", "Desktop homepage intro with benefit rows and small numbered markers.", `<div class="content-pad"><h4>Rust in je administratie</h4><div class="benefit-row"><b>1</b><div><strong>Heldere administratie</strong><br><span>Alles overzichtelijk in de cloud.</span></div></div><div class="benefit-row"><b>2</b><div><strong>Actuele cijfers</strong><br><span>Je weet waar je staat.</span></div></div><div class="benefit-row"><b>3</b><div><strong>Minder gedoe</strong><br><span>Meer tijd voor je onderneming.</span></div></div></div>`),
+        opt("C", "Topic tabs", "Compacte onderwerpkeuze in plaats van lange panels.", "Desktop homepage intro with topic tabs for service categories.", `<div class="content-pad"><h4>Waarmee kan Iris helpen?</h4><div class="topic-tabs"><span>Administratie</span><span>Bedrijfsondersteuning</span><span>Cijfers</span><span>Processen</span></div><p>Per onderwerp snel naar concrete hulp en werkwijze.</p></div>`)
+      ];
+    }
+
+    function introMobile() {
+      return [
+        opt("A", "Short accordion", "Behoud accordion, maar korter en luchtiger.", "Mobile homepage intro with shorter accordion content and larger row spacing.", `<div class="content-pad"><h4>Je administratie goed geregeld</h4><div class="mini-card"><strong>Administratie goed geregeld</strong><span>Open voor de korte uitleg.</span></div><div class="mini-card"><strong>Bedrijfsondersteuning</strong><span>Bekijk wat ik uit handen neem.</span></div></div>`),
+        opt("B", "Stacked cards", "Geen verborgen tekst, maar stapelbare dienstenkaarten.", "Mobile homepage intro with stacked visible service cards.", `<div class="content-pad"><h4>Ik help je met</h4><div class="card-grid"><div class="mini-card"><strong>Boekhouding</strong><span>Op orde en bij.</span></div><div class="mini-card"><strong>Cijfers</strong><span>Altijd inzicht.</span></div><div class="mini-card"><strong>Processen</strong><span>Minder handwerk.</span></div></div></div>`),
+        opt("C", "Guided choice", "Mobiele keuzeroute op basis van hulpvraag.", "Mobile homepage intro with guided choice chips.", `<div class="content-pad"><h4>Wat wil je oplossen?</h4><div class="topic-tabs"><span>Geen tijd</span><span>Geen overzicht</span><span>Nieuwe software</span><span>Facturatie</span></div></div>`)
+      ];
+    }
+
+    function servicesDesktop() {
+      return [
+        opt("A", "Card grid", "Aanbod gegroepeerd in duidelijke kaarten.", "Desktop services card grid grouped by support type.", `<div class="content-pad"><h4>Wat kan ik voor je doen</h4><div class="card-grid"><div class="mini-card"><strong>Administratie</strong><span>Dagelijkse boekhouding en facturatie.</span></div><div class="mini-card"><strong>Inrichting</strong><span>Systemen en koppelingen op orde.</span></div><div class="mini-card"><strong>Bereikbaarheid</strong><span>Afspraken en kantoormanagement.</span></div><div class="mini-card"><strong>Processen</strong><span>Slimmer werken.</span></div></div></div>`),
+        opt("B", "Timeline", "Werkwijze wordt een vertrouwenwekkende stappenlijn.", "Desktop process timeline with three clear working steps.", `<div class="content-pad"><h4>Hoe werk ik</h4><div class="timeline"><div class="timeline-step" data-step="1"><strong>Kennismaken</strong><br><span>We kijken of er een goede match is.</span></div><div class="timeline-step" data-step="2"><strong>Inrichten</strong><br><span>Afspraken en administratie helder maken.</span></div><div class="timeline-step" data-step="3"><strong>Bijhouden</strong><br><span>Vaste prijs, korte lijnen, overzicht.</span></div></div></div>`),
+        opt("C", "Checklist matrix", "Concreet aanbod in compacte checklist.", "Desktop checklist matrix with category labels and CTA below.", `<div class="content-pad"><h4>Praktisch alles wat ondernemen makkelijker maakt</h4><div class="matrix"><div class="matrix-row"><strong>+</strong><span>Boekhouding opzetten</span><small>Administratie</small></div><div class="matrix-row"><strong>+</strong><span>Belastingaangiftes voorbereiden</span><small>Cijfers</small></div><div class="matrix-row"><strong>+</strong><span>Processen stroomlijnen</span><small>Bedrijf</small></div></div></div>`)
+      ];
+    }
+
+    function servicesMobile() {
+      return [
+        opt("A", "Service cards", "Korte kaartjes in plaats van lange lijsten.", "Mobile services grouped into compact cards.", `<div class="content-pad"><h4>Wat kan ik doen?</h4><div class="card-grid"><div class="mini-card"><strong>Administratie</strong><span>Boekhouding en facturatie.</span></div><div class="mini-card"><strong>Support</strong><span>Regelen en opvolgen.</span></div><div class="mini-card"><strong>Proces</strong><span>Stroomlijnen.</span></div></div></div>`),
+        opt("B", "Steps first", "Eerst werkwijze, daarna aanbod.", "Mobile services page starts with working steps.", `<div class="content-pad"><h4>Zo werken we</h4><div class="timeline"><div class="timeline-step" data-step="1"><strong>Kennismaken</strong></div><div class="timeline-step" data-step="2"><strong>Inrichten</strong></div><div class="timeline-step" data-step="3"><strong>Bijhouden</strong></div></div></div>`),
+        opt("C", "Category chips", "Snelle ingang naar categorieen.", "Mobile services with category chips and short explainer.", `<div class="content-pad"><h4>Kies je hulpvraag</h4><div class="topic-tabs"><span>Boekhouding</span><span>Facturatie</span><span>Cijfers</span><span>Kantoor</span></div><p>Daarna volgt de concrete uitleg per onderwerp.</p></div>`)
+      ];
+    }
+
+    function reviewsDesktop() {
+      return [
+        opt("A", "Quote cards", "Gelijke kaarten met portret, korte quote en naam.", "Desktop reviews as uniform quote cards.", `<div class="review-pad"><h4>Wat anderen zeggen</h4><div class="quote-grid"><div class="quote-card"><img src="images/reviews/leo-timmers.jpg" alt=""><p>"Nu kan ik focussen op mijn bedrijf."</p><strong>Leo</strong></div><div class="quote-card"><img src="images/reviews/sandra.jpg" alt=""><p>"Alles tot in de puntjes geregeld."</p><strong>Sandra</strong></div></div></div>`),
+        opt("B", "Featured quote", "Een sterk verhaal krijgt meer aandacht.", "Desktop reviews with one large featured testimonial.", `<div class="review-pad"><h4>Wat anderen zeggen</h4><div class="featured-review"><img src="images/reviews/top-foto.jpg" alt=""><div><p>"Het is een fijne samenwerking, die meer zicht geeft op de stand van zaken."</p><strong>Tex-Lin Hygiene Service</strong></div></div></div>`),
+        opt("C", "Story tiles", "Reviews als praktijkverhalen per type hulp.", "Desktop reviews as story tiles grouped by support theme.", `<div class="review-pad"><h4>Verhalen uit de praktijk</h4><div class="story-tiles"><div class="story-tile">Administratie op orde</div><div class="story-tile">Digitale ontzorging</div><div class="story-tile">Kantoormanagement</div><div class="story-tile">Cijfers en overzicht</div></div></div>`)
+      ];
+    }
+
+    function reviewsMobile() {
+      return [
+        opt("A", "One quote at a time", "Rustige verticale reviewkaarten.", "Mobile reviews as one quote card per viewport.", `<div class="review-pad"><h4>Wat anderen zeggen</h4><div class="quote-card"><img src="images/reviews/sandra.jpg" alt=""><p>"Alles tot in de administratieve puntjes geregeld."</p><strong>Sandra</strong></div></div>`),
+        opt("B", "Featured first", "Begin met een uitgelichte korte quote.", "Mobile reviews start with one featured testimonial.", `<div class="review-pad"><h4>Uitgelichte review</h4><div class="featured-review"><img src="images/reviews/top-foto.jpg" alt=""><div><p>"Meer zicht op de stand van zaken."</p><strong>Tex-Lin</strong></div></div></div>`),
+        opt("C", "Logo/story stack", "Compacte tegels per verhaal.", "Mobile review story stack by topic.", `<div class="review-pad"><h4>Praktijkverhalen</h4><div class="story-tiles"><div class="story-tile">Boekhouding</div><div class="story-tile">Ontzorging</div><div class="story-tile">Overzicht</div></div></div>`)
+      ];
+    }
+
+    function contactDesktop() {
+      return [
+        opt("A", "Contact card", "Contactgegevens prominent naast de foto.", "Desktop contact card with photo and direct phone/email actions.", `<div class="contact-pad"><div class="contact-card-row"><div class="copy"><h4>Neem contact op</h4><p>Irisabella Bakker<br>De Koog, Texel</p><div class="contact-buttons"><span>Bel direct</span><span>Mail Iris</span></div></div><div class="contact-photo"></div></div></div>`),
+        opt("B", "CTA band", "Sterke afsluiter onder content en voor footer.", "Desktop full-width blue-purple contact CTA band.", `<div class="contact-band"><h4>Wil je ook je zaak op orde?</h4><p>Mail of bel voor een kennismaking.</p><div class="contact-buttons"><span>info@irissupport.nl</span><span>06 53 24 52 53</span></div></div>`),
+        opt("C", "Detail grid", "Zakelijke contactinformatie in scanbare blokken.", "Desktop contact details grid for phone, email, address and socials.", `<div class="contact-pad"><h4>Contactgegevens</h4><div class="detail-grid"><div class="detail-card"><strong>Telefoon</strong><br>06 53 24 52 53</div><div class="detail-card"><strong>E-mail</strong><br>info@irissupport.nl</div><div class="detail-card"><strong>Adres</strong><br>De Koog, Texel</div><div class="detail-card"><strong>Social</strong><br>Facebook & LinkedIn</div></div></div>`)
+      ];
+    }
+
+    function contactMobile() {
+      return [
+        opt("A", "Tap actions first", "Bel en mail direct bovenaan.", "Mobile contact with call and mail actions first.", `<div class="contact-pad"><h4>Neem contact op</h4><div class="contact-buttons"><span>Bel direct</span><span>Mail Iris</span></div><p>Irisabella Bakker<br>De Koog, Texel</p></div>`),
+        opt("B", "Photo plus CTA", "Persoonlijke foto met kort actieblok.", "Mobile contact with photo followed by CTA actions.", `<div class="editorial-contact"><div class="photo"></div><div class="copy"><h4>Even kennismaken?</h4><div class="contact-buttons"><span>Bel</span><span>Mail</span></div></div></div>`),
+        opt("C", "Detail cards", "Contactgegevens als aparte tikbare kaarten.", "Mobile contact details as stacked cards.", `<div class="contact-pad"><h4>Contact</h4><div class="detail-grid"><div class="detail-card"><strong>Telefoon</strong>06 53 24 52 53</div><div class="detail-card"><strong>E-mail</strong>info@irissupport.nl</div><div class="detail-card"><strong>Social</strong>Facebook / LinkedIn</div></div></div>`)
+      ];
+    }
+
+    function footerDesktop() {
+      return [
+        opt("A", "Clean dark", "Donkere footer blijft, maar beter geordend en contrastvoller.", "Desktop clean dark footer with inline round social icons and improved contrast.", `<div class="footer-clean"><div><img src="images/logo_iriss_support.png" alt=""><div class="social-row"><span>@</span><span>f</span><span>in</span></div></div><div><strong>Contact</strong><p>Irisabella Bakker<br>De Koog, Texel</p></div><div><strong>Direct</strong><p>Bel<br>Mail<br>Reviews</p></div><div><strong>Legal</strong><p>Voorwaarden<br>Privacy</p></div></div>`),
+        opt("B", "Light brand", "Vriendelijker wit/lavendel met donkere tekst.", "Desktop light brand footer with large logo and readable text.", `<div class="footer-light"><div class="brand-side"><img src="images/logo_iriss_support.png" alt=""></div><div class="copy-side"><h4>Contact</h4><p>Irisabella Bakker<br>info@irissupport.nl<br>06 53 24 52 53</p><div class="social-row"><span>@</span><span>f</span><span>in</span></div></div></div>`),
+        opt("C", "Split CTA footer", "Eerst contactactie, daarna compacte footerinfo.", "Desktop split footer with blue CTA strip above compact legal footer.", `<div class="footer-split"><div class="top"><h4>Wil je kennismaken?</h4><div class="contact-buttons"><span>Bel</span><span>Mail</span></div></div><div class="bottom"><div><strong>Iris</strong><p>Business Support</p></div><div><strong>Contact</strong><p>Texel<br>info@irissupport.nl</p></div><div><strong>Volg</strong><div class="social-row"><span>@</span><span>f</span><span>in</span></div></div></div></div>`)
+      ];
+    }
+
+    function footerMobile() {
+      return [
+        opt("A", "Contact first", "Footer begint met bel/mail en daarna legal.", "Mobile footer ordered as contact actions, social icons, legal text.", `<div class="footer-clean"><div><img src="images/logo_iriss_support.png" alt=""><div class="contact-buttons"><span>Bel</span><span>Mail</span></div><div class="social-row"><span>@</span><span>f</span><span>in</span></div></div><div><strong>Legal</strong><p>Voorwaarden<br>Privacy</p></div></div>`),
+        opt("B", "Light compact", "Lichtere mobiele footer met logo en contactgegevens.", "Mobile light footer with logo, phone, email and social icons.", `<div class="footer-light"><div class="brand-side"><img src="images/logo_iriss_support.png" alt=""></div><div class="copy-side"><h4>Contact</h4><p>info@irissupport.nl<br>06 53 24 52 53</p><div class="social-row"><span>@</span><span>f</span><span>in</span></div></div></div>`),
+        opt("C", "Sticky-like action end", "Afsluitende blauwe CTA boven compacte footer.", "Mobile footer with CTA strip and compact dark details below.", `<div class="footer-split"><div class="top"><h4>Wil je kennismaken?</h4><div class="contact-buttons"><span>Bel</span><span>Mail</span></div></div><div class="bottom"><div><strong>Iris Business Support</strong><p>Texel<br>info@irissupport.nl</p></div></div></div>`)
+      ];
+    }
+
+    function typeDesktop() {
+      return [
+        opt("A", "Calmer body", "Brandfont voor koppen, gewone sans-serif voor alinea's.", "Desktop typography with brand font for headings and calmer sans-serif body copy.", `<div class="type-pad type-calm"><h4>Je administratie goed geregeld</h4><p>Ik weet het. De boekhouding is niet waarvoor jij ondernemer bent geworden. Daarom zorg ik voor rust en overzicht.</p></div>`),
+        opt("B", "Fresh palette", "Blauw als basis, paars als accent, meer lichte vlakken.", "Desktop fresh palette with blue primary, purple accents and pale blue sections.", `<div class="type-pad type-fresh"><h4>Rust in je cijfers</h4><p>Blauw voor betrouwbaarheid, paars voor herkenning, lichte tinten voor overzicht.</p><div class="topic-tabs"><span>Administratie</span><span>Cijfers</span></div></div>`),
+        opt("C", "Editorial scale", "Grotere koppen, stillere tekst, minder decoratie.", "Desktop editorial hierarchy with larger headings and quieter paragraphs.", `<div class="type-pad type-editorial"><h4>Brengt de zaak op orde</h4><p>Een volwassen typografische stijl die vertrouwen geeft zonder het persoonlijke karakter te verliezen.</p></div>`)
+      ];
+    }
+
+    function typeMobile() {
+      return [
+        opt("A", "Readable body", "Minder zware mobiele alinea's.", "Mobile typography with brand headings and lighter body text.", `<div class="type-pad type-calm"><h4>Je administratie goed geregeld</h4><p>Kortere regels, rustiger gewicht en meer ademruimte tussen tekstblokken.</p></div>`),
+        opt("B", "Compact hierarchy", "Koppen korter en content sneller scanbaar.", "Mobile typography with compact heading hierarchy and chips.", `<div class="type-pad type-fresh"><h4>Rust in je cijfers</h4><div class="topic-tabs"><span>Boekhouding</span><span>Facturatie</span><span>Cijfers</span></div><p>Sneller kiezen, minder zoeken.</p></div>`),
+        opt("C", "Editorial mobile", "Sterke titel met korte intro per sectie.", "Mobile editorial typography with stronger titles and short supporting text.", `<div class="type-pad type-editorial"><h4>Brengt de zaak op orde</h4><p>Een duidelijk ritme per sectie, met korte intro en daarna concrete actie.</p></div>`)
+      ];
+    }
+
+    function render() {
+      const root = document.getElementById("areas");
+      root.innerHTML = "";
+
+      areas.forEach((area, index) => {
+        const section = document.createElement("section");
+        section.className = "area";
+        section.id = area.id;
+        section.innerHTML = `
+          <div class="area-head">
+            <p class="eyebrow">Element ${index + 1}</p>
+            <h2 class="area-title">${area.title}</h2>
+            <p class="area-intro">${area.intro}</p>
+            <div class="audit-notes">${area.notes.map((note) => `<div class="audit-note">${note}</div>`).join("")}</div>
+          </div>
+          <div class="device-tabs" role="tablist" aria-label="${area.title}">
+            <button class="tab-button" type="button" role="tab" aria-selected="true" data-target="${area.id}-desktop">Desktop</button>
+            <button class="tab-button" type="button" role="tab" aria-selected="false" data-target="${area.id}-mobile">Mobile</button>
+          </div>
+        `;
+
+        section.appendChild(renderPanel(area, "desktop"));
+        section.appendChild(renderPanel(area, "mobile"));
+        root.appendChild(section);
+      });
+    }
+
+    function renderPanel(area, device) {
+      const panel = document.createElement("div");
+      panel.className = `device-panel ${device === "desktop" ? "is-active" : ""}`;
+      panel.id = `${area.id}-${device}`;
+      panel.setAttribute("role", "tabpanel");
+
+      const groupName = `${area.id}${device[0].toUpperCase()}${device.slice(1)}`;
+      const deviceData = area.devices[device];
+      const options = [deviceData.current, ...deviceData.options];
+
+      panel.innerHTML = `<p class="device-note">${deviceData.note}</p><div class="option-grid"></div>`;
+      const grid = panel.querySelector(".option-grid");
+
+      options.forEach((option, index) => {
+        grid.appendChild(renderOption(groupName, area.title, device, option, index === 0));
+      });
+
+      return panel;
+    }
+
+    function renderOption(groupName, areaTitle, device, option, checked) {
+      const template = document.getElementById("optionTemplate");
+      const node = template.content.firstElementChild.cloneNode(true);
+      const input = node.querySelector("input");
+      const preview = node.querySelector(".preview");
+
+      input.name = groupName;
+      input.value = option.value;
+      input.checked = checked;
+      input.setAttribute("aria-label", `${areaTitle} ${device} ${option.name}`);
+      node.querySelector(".option-name").textContent = option.name;
+      node.querySelector(".option-desc").textContent = option.desc;
+      preview.classList.add(device);
+
+      if (option.kind === "current") {
+        preview.style.setProperty("--shot-position", option.position || "top center");
+        preview.innerHTML = `<img class="current-shot" src="${option.image}" alt="${option.label}"><span class="shot-label">${option.label}</span>`;
+      } else {
+        preview.innerHTML = option.html;
+      }
+
+      return node;
+    }
+
+    function initTabs() {
+      document.querySelectorAll(".device-tabs").forEach((tabs) => {
+        tabs.addEventListener("click", (event) => {
+          const button = event.target.closest(".tab-button");
+          if (!button) return;
+
+          const area = tabs.closest(".area");
+          tabs.querySelectorAll(".tab-button").forEach((item) => {
+            item.setAttribute("aria-selected", item === button ? "true" : "false");
+          });
+          area.querySelectorAll(".device-panel").forEach((panel) => {
+            panel.classList.toggle("is-active", panel.id === button.dataset.target);
+          });
+        });
+      });
+    }
+
+    function selectedValue(name) {
+      const input = document.querySelector(`input[name="${name}"]:checked`);
+      return input ? input.value : "No choice selected";
+    }
+
+    function groupName(areaId, device) {
+      return `${areaId}${device[0].toUpperCase()}${device.slice(1)}`;
+    }
+
+    function updateBrief() {
+      const lines = ["Design choices for Iris Business Support mockup:"];
+      areas.forEach((area) => {
+        ["desktop", "mobile"].forEach((device) => {
+          const label = device === "desktop" ? "Desktop" : "Mobile";
+          lines.push(`- ${area.title} - ${label}: ${selectedValue(groupName(area.id, device))}`);
+        });
+      });
+
+      const noteValue = document.getElementById("designerNotes").value.trim();
+      if (noteValue) {
+        lines.push("");
+        lines.push("Extra notes:");
+        lines.push(noteValue);
+      }
+
+      document.getElementById("briefText").value = lines.join("\n");
+    }
+
+    function initBriefActions() {
+      document.querySelectorAll('input[type="radio"]').forEach((input) => {
+        input.addEventListener("change", updateBrief);
+      });
+
+      document.getElementById("designerNotes").addEventListener("input", updateBrief);
+
+      document.getElementById("resetChoices").addEventListener("click", () => {
+        areas.forEach((area) => {
+          ["desktop", "mobile"].forEach((device) => {
+            const input = document.querySelector(`input[name="${groupName(area.id, device)}"]`);
+            if (input) input.checked = true;
+          });
+        });
+        document.getElementById("designerNotes").value = "";
+        updateBrief();
+        document.getElementById("copyStatus").textContent = "Reset complete.";
+      });
+
+      document.getElementById("copyBrief").addEventListener("click", async () => {
+        updateBrief();
+        const textArea = document.getElementById("briefText");
+        try {
+          await navigator.clipboard.writeText(textArea.value);
+          document.getElementById("copyStatus").textContent = "Design brief copied.";
+        } catch (error) {
+          textArea.focus();
+          textArea.select();
+          document.getElementById("copyStatus").textContent = "Select the generated brief text manually.";
+        }
+      });
+    }
+
+    render();
+    initTabs();
+    initBriefActions();
+    updateBrief();
+  </script>
+</body>
+</html>

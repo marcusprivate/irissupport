@@ -1,0 +1,4 @@
+# Public static export. Allow crawlers to index pages and fetch assets.
+
+User-agent: *
+Disallow:
